@@ -1,11 +1,26 @@
-/* eslint-disable */
 import "bootstrap";
 import "./style.css";
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+let pronoun = ["the", "our"];
+let adj = ["great", "big"];
+let noun = ["jogger", "racoon"];
+let hacks = [".com", ".us", ".cl", ".org", ".net"];
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
+let numero = rango => Math.floor(Math.random() * rango);
+
+const armarDomain = (pron, adj, noun, hacks) => {
+  let domain = `${pron[numero(pron.length)]}${adj[numero(adj.length)]}${
+    noun[numero(noun.length)]
+  }${hacks[numero(hacks.length)]}`;
+  return domain;
 };
+
+let domainRandom = document.querySelector("#domainRandom");
+
+const showDomain = () => {
+  domainRandom.innerHTML = armarDomain(pronoun, adj, noun, hacks);
+};
+
+const boton = document
+  .querySelector("#ClickMe")
+  .addEventListener("click", showDomain);
